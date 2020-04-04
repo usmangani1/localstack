@@ -18,8 +18,22 @@ def patch_ec2():
                     return '_ignore_'
         return revoke_security_group_egress
 
+    def patch_describe_instance_credit_specifications(backend):
+        if hasattr(backend, 'describe_instance_credit_specifications'):
+            return
+
+        def describe_instance_credit_specifications(**kwargs):
+            instance_id = kwargs.get('InstanceId')
+            result = {
+                'InstanceCreditSpecifications': [{'InstanceId': instance_id, 'CpuCredits': 'standard'}]
+            }
+            return result
+
+        backend.describe_instance_credit_specifications = describe_instance_credit_specifications
+
     for region, backend in ec2_models.ec2_backends.items():
         backend.revoke_security_group_egress = patch_revoke_security_group_egress(backend)
+        patch_describe_instance_credit_specifications(backend)
 
 
 def start_ec2(port=None, asynchronous=False, update_listener=None):
