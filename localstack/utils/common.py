@@ -698,6 +698,8 @@ def get_arch():
 def short_uid():
     return str(uuid.uuid4())[0:8]
 
+def long_uid():
+    return str(uuid.uuid4())
 
 def json_safe(item):
     """ return a copy of the given object (e.g., dict) that is safe for JSON dumping """

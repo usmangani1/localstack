@@ -196,6 +196,17 @@ def get_external_port(headers, request_handler):
     return request_handler.proxy.port
 
 
+<<<<<<< Updated upstream
+=======
+def validate_empty_message_batch(path):
+    parsed_path = urlparse.urlparse(path)
+    data = urlparse.parse_qs(parsed_path.query)
+    if not data.get('Entries', None):
+        return True
+    return False
+
+
+>>>>>>> Stashed changes
 class ProxyListenerSQS(ProxyListener):
     def forward_request(self, method, path, data, headers):
         if method == 'OPTIONS':
@@ -274,6 +285,15 @@ class ProxyListenerSQS(ProxyListener):
                 queue_url = re.match(r'.*<QueueUrl>(.*)</QueueUrl>', content_str, re.DOTALL).group(1)
                 _set_queue_attributes(queue_url, req_data)
 
+<<<<<<< Updated upstream
+=======
+        elif action == 'SendMessageBatch':
+            print(data, req_data, path)
+            if validate_empty_message_batch(path):
+                msg = 'There should be at least one SendMessageBatchRequestEntry in the request.'
+                return make_error(code=404, code_string='EmptyBatchRequest', message=msg)
+
+>>>>>>> Stashed changes
         # instruct listeners to fetch new SQS message
         if action in ('SendMessage', 'SendMessageBatch'):
             _process_sent_message(path, req_data, headers)

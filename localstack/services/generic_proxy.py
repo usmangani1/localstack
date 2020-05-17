@@ -290,7 +290,6 @@ class GenericProxyHandler(BaseHTTPRequestHandler):
                 # prevent requests from processing response body
                 if not response._content_consumed and response.raw:
                     response._content = response.raw.read()
-
             # update listener (post-invocation)
             if self.proxy.update_listener:
                 kwargs = {
