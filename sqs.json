@@ -1,0 +1,11 @@
+{"TemplateFormatVersion": "2010-09-09",
+    "Description": "Deploys an SQS queue",
+    "Resources": {
+        "MyQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {
+                "ReceiveMessageWaitTimeSeconds": 1
+            }
+        }
+    }
+}

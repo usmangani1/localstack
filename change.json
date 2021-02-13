@@ -1,0 +1,18 @@
+{
+  "Comment": "optional comment about the changes in this change batch request",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "example.com",
+        "Type": "TXT",
+        "TTL": 600,
+        "ResourceRecords": [
+          {
+            "Value": "ID=xyz&AltId=abc"
+          }
+        ]
+      }
+    }
+  ]
+}

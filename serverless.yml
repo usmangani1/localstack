@@ -1,0 +1,12 @@
+provider:
+  name: aws
+  runtime: go1.x
+  stage: ${opt:stage,'dev'}
+  region: eu-west-2
+
+service: email-service
+functions:
+  eventQueueHandler:
+    handler: bin/handler
+    events:
+      - sqs: ${ssm:/email_module/event_queue_arn}

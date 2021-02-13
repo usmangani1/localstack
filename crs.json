@@ -1,0 +1,9 @@
+{"QueueConfigurations": [
+    {
+      "QueueArn": "arn:aws:sqs:eu-west-1:000000000000:documents-created",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ]
+    }
+  ]
+}

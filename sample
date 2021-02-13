@@ -1,0 +1,4 @@
+import boto3
+route53_client = boto3.client('route53', endpoint_url='http://localstack:4566', region_name='dummy', aws_access_key_id='dummy', aws_secret_access_key='dummy') 
+zone_id = "ZONEID"
+recordsets = route53_client.list_resource_record_sets(HostedZoneId=zone_id,StartRecordType='TXT')

@@ -1,0 +1,6 @@
+[{
+	"EventBusName": "orderTestBus",
+	"Source": "UpdateOrder",
+	"DetailType": "OrderAdded",
+	"Detail": "{\"order_id\":\"b7dasay\",\"quantity\":\"2\",\"customer_id\":\"alpha\"}"
+}]
